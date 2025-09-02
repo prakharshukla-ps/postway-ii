@@ -1,0 +1,21 @@
+{
+  "name": "postway-ii",
+  "version": "1.0.0",
+  "description": "A robust social media backend REST-API",
+  "license": "ISC",
+  "author": "Prakhar Shukla",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.19.0",
+    "mongoose": "^8.18.0",
+    "multer": "^2.0.2"
+  }
+}
