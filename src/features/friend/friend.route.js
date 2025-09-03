@@ -5,4 +5,17 @@ const friendRouter = express.Router();
 
 const friendController = new FriendController();
 
+friendRouter.get("/get-friends/:userId", (req, res, next) =>
+  friendController.getUserFriends(req, res, next)
+);
+friendRouter.get("/get-pending-requests", (req, res, next) =>
+  friendController.getPendingRequests(req, res, next)
+);
+friendRouter.post("/toggle-friendship/:friendId", (req, res, next) =>
+  friendController.toggleFriendship(req, res, next)
+);
+friendRouter.post("/response-to-request/:friendId", (req, res, next) =>
+  friendController.responseToRequest(req, res, next)
+);
+
 export default friendRouter;
