@@ -1,23 +1,21 @@
 import bcrypt from "bcrypt";
 import CustomErrorHandler from "./errorHandler.js";
 
-const hashPassword = async (password, next) => {
+const hashPassword = async (password) => {
   try {
     return await bcrypt.hash(password, 12);
   } catch (err) {
-    next(new CustomErrorHandler(400, "Encountered error in hashing password!"));
+    throw new CustomErrorHandler(400, "Encountered error in hashing password!");
   }
 };
 
-const compareHashedPassword = async (password, hashPassword, next) => {
+const compareHashedPassword = async (password, hashPassword) => {
   try {
     return await bcrypt.compare(password, hashPassword);
   } catch (err) {
-    next(
-      new CustomErrorHandler(
-        400,
-        "Encountered error in comparing hashing password!"
-      )
+    throw new CustomErrorHandler(
+      400,
+      "Encountered error in comparing hashed password!"
     );
   }
 };

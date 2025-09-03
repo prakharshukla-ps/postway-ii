@@ -25,7 +25,7 @@ export default class UserController {
         return next(new CustomErrorHandler(400, "Email already in use!"));
       }
 
-      const hashedPassword = await hashPassword(password, next);
+      const hashedPassword = await hashPassword(password);
 
       let avatar = null;
       if (req.file) {
@@ -70,11 +70,7 @@ export default class UserController {
         return next(new CustomErrorHandler(404, "User not found!"));
       }
 
-      const isMatch = await compareHashedPassword(
-        password,
-        user.password,
-        next
-      );
+      const isMatch = await compareHashedPassword(password, user.password);
       if (!isMatch) {
         return next(new CustomErrorHandler(401, "Invalid credentials!"));
       }
